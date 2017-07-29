@@ -1,0 +1,13 @@
+language: android
+android:
+  components:
+    - build-tools-20.0.0
+    - android-20
+jdk: oraclejdk8
+
+cache:
+  directories:
+    - $HOME/gradle/wrapper
+
+before_install:
+  - chmod +x gradlew
