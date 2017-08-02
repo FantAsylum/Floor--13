@@ -1,5 +1,8 @@
 package com.floor13.game.core
 
+import com.floor13.game.core.map.Map
+import com.floor13.game.core.map.Tile
+
 class World(
         val map: Map,
         val creatures: MutableList<Creature> = mutableListOf()
