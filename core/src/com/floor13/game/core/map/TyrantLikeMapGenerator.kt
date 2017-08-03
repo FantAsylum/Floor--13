@@ -14,6 +14,29 @@ class TyrantLikeMapGanerator(
         val map = Array(width, { Array(height, { Tile(TileType.WALL) }) })
         
         // 2. Dig out a single room in the centre of the map
+        map.fillRect(
+                width / 2,
+                height / 2,
+                roomWidth.random,
+                roomHeight.random,
+                TileType.GROUND)
+
+        // 3. Pick a wall of any room 
+
         throw NotImplementedError()
     }
+
+    // private val features = arrayOf(
+    //         { x: Int, y: Int, direction: Direction -> // Room
+    //             data class Measurements(
+    //                     val xs: IntRange,
+    //                     val ys: IntRange)
+    //             val measurments = when direction {
+    //                 Direction.UP -> Measurements(
+    //                         Math.max(0, x - roomWidth.endInclusive) ..
+    //                         Math.min(width - 1, x + roomWidth.endInclusive),
+    //                         0,
+    //                 }
+    //             }
+    //     )
 }
