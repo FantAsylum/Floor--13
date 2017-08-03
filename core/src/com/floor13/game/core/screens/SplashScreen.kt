@@ -1,8 +1,10 @@
 package com.floor13.game.core.screens
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
+import com.badlogic.gdx.graphics.GL20
 
-class MainMenuScreen : Screen {
+class SplashScreen : Screen {
     override fun hide() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -12,7 +14,8 @@ class MainMenuScreen : Screen {
     }
 
     override fun render(delta: Float) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Gdx.gl.glClearColor(0f, 0f, 0f, 0f)
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
     }
 
     override fun pause() {
