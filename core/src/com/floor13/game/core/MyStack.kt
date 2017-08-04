@@ -1,9 +1,6 @@
 package com.floor13.game.core
 
-class MyStack<T>(list:MutableList<T>) {
-
-    var items: MutableList<T> = list
-
+class MyStack<T>( var items: MutableList<T> = arrayListOf()) {
 
     fun isEmpty():Boolean = this.items.isEmpty()
 

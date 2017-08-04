@@ -7,8 +7,7 @@ import com.floor13.game.core.screens.SplashScreen
 
 class FloorMinus13(): ApplicationAdapter() {
 
-    private var screenList : MutableList<Screen> = arrayListOf()
-    private val screenStack = MyStack<Screen>(screenList)
+    private val screenStack = MyStack<Screen>()
 
     override fun create() {
         val splashScreen = SplashScreen()
@@ -19,15 +18,16 @@ class FloorMinus13(): ApplicationAdapter() {
         screenStack.peek()?.render(Gdx.graphics.deltaTime)
     }
 
-    fun popScreenList() : Screen? {
-        return screenStack.pop()
+    fun removeScreen() {
+        screenStack.pop()
     }
 
-    fun peekScreenList() : Screen? {
-        return screenStack.peek()
+    fun replaceScreen(screen : Screen) {
+        screenStack.pop()
+        screenStack.push(screen)
     }
 
-    fun pushScreenList(screen : Screen) {
+    fun pushScreen(screen : Screen) {
         screenStack.push(screen)
     }
 }
