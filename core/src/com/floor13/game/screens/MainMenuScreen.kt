@@ -1,4 +1,4 @@
-package com.floor13.game.core.screens
+package com.floor13.game.screens
 
 import com.badlogic.gdx.Screen
 

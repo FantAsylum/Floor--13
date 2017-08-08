@@ -1,8 +1,8 @@
-package com.floor13.game.core.screens
+package com.floor13.game.screens
 
 import com.badlogic.gdx.Screen
 
-class InventoryScreen : Screen {
+class GameScreen : Screen {
     override fun hide() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

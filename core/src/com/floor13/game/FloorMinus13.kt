@@ -2,8 +2,8 @@ package com.floor13.game
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
-import com.floor13.game.core.MyStack
-import com.floor13.game.core.screens.SplashScreen
+import com.floor13.game.util.MyStack
+import com.floor13.game.screens.SplashScreen
 
 class FloorMinus13(): ApplicationAdapter() {
 

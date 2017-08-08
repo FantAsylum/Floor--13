@@ -1,4 +1,4 @@
-package com.floor13.game.core
+package com.floor13.game.util
 
 class MyStack<T>( var items: MutableList<T> = arrayListOf()) {
 
