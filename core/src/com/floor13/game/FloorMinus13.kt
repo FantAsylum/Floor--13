@@ -6,7 +6,7 @@ import com.badlogic.gdx.Screen
 import com.floor13.game.util.MyStack
 import com.floor13.game.screens.SplashScreen
 
-class FloorMinus13(): ApplicationAdapter() {
+object FloorMinus13: ApplicationAdapter() {
 
     private val screenStack = MyStack<Screen>()
 
