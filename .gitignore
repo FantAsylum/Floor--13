@@ -130,3 +130,4 @@ Thumbs.db
 
 ## Gradle generated
 android/assets/version.properties
+android/assets/prev_version.properties
