@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch
 
 import com.floor13.game.core.map.Map
 
-class MapActor(val map: Map): Actor() {
+class MapActor(val map: Map): BaseActor() {
 
     init {
         setBounds(
