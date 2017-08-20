@@ -18,8 +18,9 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    version = '1.0'
+
     ext {
+        version = '0.0.1'
         appName = "Floor--13"
         gdxVersion = '1.9.6'
         roboVMVersion = '2.3.1'
@@ -86,8 +87,21 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         
     }
+
+    classes {
+        dependsOn ':createConfiguration'
+    }
 }
 
 tasks.eclipse.doLast {
     delete ".project"
 }
+
+task createConfiguration << {
+     new File("$projectDir/android/assets/version.properties").withWriter { w ->
+         Properties p = new Properties()
+         p['version'] = version.toString()
+         p.store w, null
+     }
+}
+
