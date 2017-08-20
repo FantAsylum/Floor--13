@@ -16,7 +16,8 @@ object FloorMinus13: ApplicationAdapter() {
     private val screenStack = MyStack<Screen>()
 
     override fun create() {
-        val splashScreen = SplashScreen()
+        setResourcesToBeLoaded()
+        val splashScreen = SplashScreen(assetManager)
         screenStack.push(splashScreen)
     }
 
@@ -46,5 +47,11 @@ object FloorMinus13: ApplicationAdapter() {
 
     fun pushScreen(screen : Screen) {
         screenStack.push(screen)
+    }
+
+    private fun setResourcesToBeLoaded() {
+        assetManager.apply {
+            load("graphics/terrain/level1/atlas.atlas", TextureAtlas::class.java)
+        }
     }
 }
