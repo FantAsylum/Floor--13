@@ -22,8 +22,6 @@ class TyrantLikeMapGanerator(
                 TileType.GROUND)
 
         // 3. Pick a wall of any room 
-                map.tiles().find { (_
-                , _, tile) -> tile.type == TileType.WALL }
         throw NotImplementedError()
     }
 
