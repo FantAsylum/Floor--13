@@ -37,11 +37,11 @@ object FloorMinus13: ApplicationAdapter() {
     }
 
     fun removeScreen() {
-        screenStack.pop()
+        screenStack.pop()?.dispose()
     }
 
     fun replaceScreen(screen : Screen) {
-        screenStack.pop()
+        screenStack.pop()?.dispose()
         screenStack.push(screen)
     }
 
