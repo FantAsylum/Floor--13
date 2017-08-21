@@ -32,10 +32,10 @@ object FloorMinus13: ApplicationAdapter() {
         assetManager.dispose()
     }
 
-    fun getTexture(atlas: String, name: String): TextureAtlas.AtlasRegion {
-        return assetManager.get<TextureAtlas>(atlas).findRegion(name)
+    fun getAtlas(name: String): TextureAtlas {
+        return assetManager.get<TextureAtlas>(name)
     }
-
+    
     fun removeScreen() {
         screenStack.pop()?.dispose()
     }
