@@ -1,10 +1,14 @@
 package com.floor13.game.core.map
 
+import com.floor13.game.core.Item
+import com.floor13.game.core.Creature
+
 typealias Map = Array<Array<Tile>>
-data class Tile(val type: TileType)
 
-enum class TileType {
-    GROUND,
-    WALL,
-}
+abstract class Tile(
+        var creature: Creature? = null,
+        val items: MutableList<Item> = mutableListOf()
+)
 
+class Ground: Tile() {}
+class Wall: Tile() {}

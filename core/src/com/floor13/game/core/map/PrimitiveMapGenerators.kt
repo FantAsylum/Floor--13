@@ -7,7 +7,8 @@ class EmptyMapGenerator(
     override fun generate(): Map {
         return Array(
                 width,
-                { Array(height, { Tile(TileType.GROUND) }) }
+                { Array(height, { Ground() as Tile }) }
         )
     }
 }
+

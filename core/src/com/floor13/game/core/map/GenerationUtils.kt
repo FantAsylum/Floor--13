@@ -4,10 +4,10 @@ import java.util.Random
 
 private val rand = Random()
 
-fun Map.fillRect(xs: IntRange, ys: IntRange, tileType: TileType) {
+fun Map.fillRect(xs: IntRange, ys: IntRange, tileFactory: () -> Tile) {
     for (x in xs)
         for (y in ys)
-            this[x][y] = Tile(tileType)
+            this[x][y] = tileFactory()
 }
 
 /**
@@ -17,12 +17,12 @@ fun Map.fillRect(xs: IntRange, ys: IntRange, tileType: TileType) {
   * @param height height
   * @param tileType desired tile type
   */
-fun Map.fillRect(x: Int, y: Int, width: Int, height: Int, tileType: TileType) {
+fun Map.fillRect(x: Int, y: Int, width: Int, height: Int, tileFactory: () -> Tile) {
     val xn = Math.max(x - width / 2, 0)
     val yn = Math.max(y - height / 2, 0)
     val xk = xn + width
     val yk = yn + height
-    fillRect(xn..xk, yn..yk, tileType)
+    fillRect(xn..xk, yn..yk, tileFactory)
 }
 
 val IntRange.random: Int

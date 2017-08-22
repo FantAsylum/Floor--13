@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import ktx.collections.*
 
 import com.floor13.game.core.map.Map
+import com.floor13.game.util.sameTypeAs
 
 /**
  * @param atlas atlas for resolving textures
@@ -25,16 +26,16 @@ class SidedTextureResolver(
         return cache[x][y] ?: {
             val suffix = StringBuilder()
 
-            val type = map[x][y].type
+            val tile = map[x][y]
         
             // order convention: urld
-            if (y == 0 || map[x][y - 1].type == type)
+            if (y == 0 || map[x][y - 1] sameTypeAs tile)
                 suffix.append('u')
-            if (x == map.size - 1 || map[x + 1][y].type == type)
+            if (x == map.size - 1 || map[x + 1][y] sameTypeAs tile)
                 suffix.append('r')
-            if (x == 0 || map[x - 1][y].type == type)
+            if (x == 0 || map[x - 1][y] sameTypeAs tile)
                 suffix.append('l')
-            if (y == (map.getOrNull(0)?.size ?: 0) - 1 || map[x][y + 1].type == type)
+            if (y == (map.getOrNull(0)?.size ?: 0) - 1 || map[x][y + 1] sameTypeAs tile)
                 suffix.append('d')
 
             val exactName = "${name}_${suffix}"
@@ -46,7 +47,6 @@ class SidedTextureResolver(
                     variants.add(region)
 
             cache[x][y] = variants.random()
-            System.out.println("${cache[x][y]}")
             cache[x][y]!!
         }()
     }

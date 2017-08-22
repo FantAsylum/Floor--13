@@ -1,13 +1,13 @@
 package com.floor13.game
 
 import com.floor13.game.core.map.Tile
-import com.floor13.game.core.map.TileType
-
-val TileType.texture: String
-    get() = when(this) {
-        TileType.GROUND -> "floor"
-        TileType.WALL -> "wall"
-    }
+import com.floor13.game.core.map.Ground
+import com.floor13.game.core.map.Wall
 
 val Tile.texture: String
-    get() = this.type.texture
+    get() = when(this) {
+        is Ground -> "floor"
+        is Wall -> "wall"
+        else -> throw RuntimeException("Invalid tile")
+    }
+
