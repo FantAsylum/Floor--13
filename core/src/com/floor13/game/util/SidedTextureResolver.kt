@@ -34,7 +34,7 @@ class SidedTextureResolver(
                 suffix.append('r')
             if (x == 0 || map[x - 1][y].type == type)
                 suffix.append('l')
-            if (y == map.getOrNull(0)?.size ?: 0 || map[x][y + 1].type == type)
+            if (y == (map.getOrNull(0)?.size ?: 0) - 1 || map[x][y + 1].type == type)
                 suffix.append('d')
 
             val exactName = "${name}_${suffix}"
@@ -46,6 +46,7 @@ class SidedTextureResolver(
                     variants.add(region)
 
             cache[x][y] = variants.random()
+            System.out.println("${cache[x][y]}")
             cache[x][y]!!
         }()
     }
