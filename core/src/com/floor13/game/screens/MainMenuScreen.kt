@@ -6,10 +6,10 @@ import com.floor13.game.FloorMinus13
 import com.floor13.game.core.World
 import com.floor13.game.core.map.Map
 import com.floor13.game.core.map.MapGenerator
-import com.floor13.game.core.map.EmptyMapGenerator
+import com.floor13.game.core.map.CrossMapGenerator
 
 class MainMenuScreen : ScreenAdapter() {
-    val generator = EmptyMapGenerator(10, 10) // FIXME: stub logic
+    val generator = CrossMapGenerator(10, 10) // FIXME: stub logic
     
     init {
         // TODO: make UI setup here
