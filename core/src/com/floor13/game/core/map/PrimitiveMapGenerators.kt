@@ -33,6 +33,10 @@ class CrossMapGenerator(
         map.fillRect(0 until width, height - 1..height - 1, { Wall() })
         
         // TODO: add doors
+        map[mx][my / 2] = Door()
+        map[mx][my + my / 2] = Door()
+        map[mx / 2][my] = Door()
+        map[mx + mx / 2][my] = Door()
 
         return map
     }
