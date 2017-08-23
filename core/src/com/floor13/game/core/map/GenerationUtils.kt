@@ -15,7 +15,7 @@ fun Map.fillRect(xs: IntRange, ys: IntRange, tileFactory: () -> Tile) {
   * @param y vertical center coordinate
   * @param width width
   * @param height height
-  * @param tileType desired tile type
+  * @param tileFactory function that produces tiles for filling the area
   */
 fun Map.fillRect(x: Int, y: Int, width: Int, height: Int, tileFactory: () -> Tile) {
     val xn = Math.max(x - width / 2, 0)

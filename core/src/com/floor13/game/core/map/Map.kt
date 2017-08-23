@@ -10,5 +10,6 @@ abstract class Tile(
         val items: MutableList<Item> = mutableListOf()
 )
 
-class Ground: Tile() {}
-class Wall: Tile() {}
+class Ground: Tile()
+class Wall: Tile()
+class Door(var opened: Boolean = false): Tile()

@@ -9,7 +9,7 @@ import com.floor13.game.core.map.MapGenerator
 import com.floor13.game.core.map.CrossMapGenerator
 
 class MainMenuScreen : ScreenAdapter() {
-    val generator = CrossMapGenerator(10, 10) // FIXME: stub logic
+    val generator = CrossMapGenerator(11, 11) // FIXME: stub logic
     
     init {
         // TODO: make UI setup here
