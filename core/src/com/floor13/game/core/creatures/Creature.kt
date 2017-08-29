@@ -26,7 +26,8 @@ abstract class Creature(
     abstract fun levelUp(level: Int)
             
     open val speed: Int
-        get() = BASIC_SPEED + connectivity * SPEED_PER_CONNECTIVITY 
+        get() = BASIC_SPEED + connectivity * SPEED_PER_CONNECTIVITY
+    
     open val sightRange: Int
         get() = (perception * SIGHT_PER_PERCEPTION).toInt()
 

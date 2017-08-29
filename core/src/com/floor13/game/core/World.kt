@@ -3,12 +3,14 @@ package com.floor13.game.core
 import com.floor13.game.core.map.Map
 import com.floor13.game.core.map.Tile
 import com.floor13.game.core.creatures.Creature
+import com.floor13.game.core.creatures.Cyborg
 
 class World(
         val map: Map,
-        val creatures: MutableList<Creature> = mutableListOf()
+        val mainCharacter: Cyborg,
+        val creatures: MutableList<Creature> = mutableListOf(mainCharacter as Creature)
 ) {
-    
+    // TODO: add main character name
     fun tick(): List<Action> {
         val appliedActions = mutableListOf<Action>()
         for (creature in creatures) {
