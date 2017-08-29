@@ -1,9 +1,11 @@
 package com.floor13.game.core.creatures
 
 import com.floor13.game.core.Action
+import com.floor13.game.core.Position
 
 abstract class Creature(
         val kindId: String,
+        var position: Position,
         var xp: Int = 0,
         var energyPoints: Int = 0,
         var nextAction: Action? = null

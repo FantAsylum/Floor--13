@@ -1,6 +1,8 @@
 package com.floor13.game.core.creatures
 
-class Cyborg(kindId: String): Creature(kindId) {
+import com.floor13.game.core.Position
+
+class Cyborg(kindId: String, position: Position): Creature(kindId, position) {
     override val perception: Int
         get() = basePerception // TODO: perception classes, item bonuses
     override val connectivity: Int
