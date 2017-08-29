@@ -33,7 +33,6 @@ class MapActor(val map: Map): BaseActor() {
                         x * TILE_SIZE,
                         y * TILE_SIZE
                 )
-                // TODO: drawing tile based on type
                 // TODO: drawing creature (if present)
                 // TODO: drawing items (if present)
             }

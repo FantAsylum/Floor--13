@@ -2,6 +2,7 @@ package com.floor13.game.core
 
 import com.floor13.game.core.map.Map
 import com.floor13.game.core.map.Tile
+import com.floor13.game.core.creatures.Creature
 
 class World(
         val map: Map,
