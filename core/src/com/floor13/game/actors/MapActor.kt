@@ -7,6 +7,7 @@ import com.floor13.game.FloorMinus13
 import com.floor13.game.core.map.Map
 import com.floor13.game.util.SidedTextureResolver
 import com.floor13.game.texture
+import com.floor13.game.TILE_SIZE
 
 class MapActor(val map: Map): BaseActor() {
 
@@ -37,9 +38,5 @@ class MapActor(val map: Map): BaseActor() {
                 // TODO: drawing items (if present)
             }
         }
-    }
-
-    companion object {
-        val TILE_SIZE = 64f
     }
 }
