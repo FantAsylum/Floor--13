@@ -1,6 +1,6 @@
 package com.floor13.game.core.creatures
 
-import com.floor13.game.core.Action
+import com.floor13.game.core.actions.Action
 import com.floor13.game.core.Position
 
 abstract class Creature(
