@@ -27,7 +27,6 @@ object CreatureTextureResolver {
 			val kind = Integer.parseInt(m.group(4))
 			val textureName = "${type}/${name}_kind${kind}"
 
-			println("$textureName")
 			return atlas.findRegion(textureName)
 		} else {
 			throw RuntimeException("Invalid kind id")

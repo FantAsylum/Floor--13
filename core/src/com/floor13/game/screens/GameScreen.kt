@@ -11,7 +11,7 @@ import com.floor13.game.core.World
 import com.floor13.game.actors.MapActor
 import com.floor13.game.actors.CreatureActor
 
-class GameScreen(world: World) : ScreenAdapter() {
+class GameScreen(val world: World) : ScreenAdapter() {
     val levelStage = Stage(ExtendViewport(
             Gdx.graphics.width.toFloat(),
             Gdx.graphics.height.toFloat()
@@ -51,6 +51,8 @@ class GameScreen(world: World) : ScreenAdapter() {
     }
     
     override fun render(delta: Float) {
+		while (world.mainCharacter.nextAction != null)
+			world.tick()
         levelStage.act(delta)
         levelStage.draw()
     }
