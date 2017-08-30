@@ -39,6 +39,10 @@ class GameScreen(world: World) : ScreenAdapter() {
 
     init {
         levelStage.addActor(MapActor(world.map))
+        for (creature in world.creatures) {
+            // TODO: create creature actor
+            // TODO: set onDeath callback
+        }
 
         Gdx.input.inputProcessor = InputMultiplexer(
                 mapScroller

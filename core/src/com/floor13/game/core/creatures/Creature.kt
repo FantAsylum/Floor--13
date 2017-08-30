@@ -15,7 +15,12 @@ abstract class Creature(
     abstract val intelligence: Int
     
     abstract val canSeeThroughWalls: Boolean
-    abstract val isAlive: Boolean
+    var isAlive: Boolean = true
+        set(alive) {
+            if (!alive)
+                onDeath()
+            field = alive 
+        }
     
     /**
     * Hit creature with specified damage
@@ -30,6 +35,9 @@ abstract class Creature(
     
     open val sightRange: Int
         get() = (perception * SIGHT_PER_PERCEPTION).toInt()
+
+    // Callbacks
+    val onDeath: () -> Unit = {}    
 
     val xpModifier: Float
         get() = 1 + intelligence * XP_MODIFIER_PER_INTELLIGENCE

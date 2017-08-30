@@ -11,7 +11,6 @@ class Cyborg(kindId: String, position: Position): Creature(kindId, position) {
         get() = baseIntelligence // TODO: item bonuses, hunger penalty (possibly)
     
     override val canSeeThroughWalls = false // TODO: possible - with sonar sight system
-    override val isAlive: Boolean = true // TODO: replace stub
     
     override fun hit(damagePoints: Int) {
         // TODO: implement
