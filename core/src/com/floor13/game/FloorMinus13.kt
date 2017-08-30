@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 
+import com.floor13.game.CREATURE_ATLAS_PATH
 import com.floor13.game.util.MyStack
 import com.floor13.game.screens.SplashScreen
 
@@ -52,6 +53,7 @@ object FloorMinus13: ApplicationAdapter() {
     private fun setResourcesToBeLoaded() {
         assetManager.apply {
             load("graphics/terrain/level1/atlas.atlas", TextureAtlas::class.java)
+			load(CREATURE_ATLAS_PATH, TextureAtlas::class.java)
         }
     }
 }
