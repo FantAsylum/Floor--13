@@ -1,4 +1,4 @@
-package com.floo13.game.util
+package com.floor13.game.util
 
 import java.util.regex.Pattern
 
@@ -14,8 +14,8 @@ object CreatureTextureResolver {
 	// first group - id (for example: "player:")
 	// second group - type
 	// third group - name
-	// fifth group (inside forth) - kind
-	val kindIdPattern = Pattern.compile("(\\w+:)?([a-z]+)_([a-z_]+)(_(\\d+))?")
+	// forth group - kind
+	val kindIdPattern = Pattern.compile("(\\w+:)?([a-z]+)_([a-z_]+)(\\d+)?")
 	val atlas: TextureAtlas
 		get() = FloorMinus13.getAtlas(CREATURE_ATLAS_PATH)
 
@@ -24,9 +24,10 @@ object CreatureTextureResolver {
 		if (m.matches()) {
 			val type = m.group(2)
 			val name = m.group(3)
-			val kind = Integer.parseInt(m.group(5))
+			val kind = Integer.parseInt(m.group(4))
 			val textureName = "${type}/${name}_kind${kind}"
-	
+
+			println("$textureName")
 			return atlas.findRegion(textureName)
 		} else {
 			throw RuntimeException("Invalid kind id")

@@ -9,6 +9,7 @@ import com.badlogic.gdx.InputAdapter
 
 import com.floor13.game.core.World
 import com.floor13.game.actors.MapActor
+import com.floor13.game.actors.CreatureActor
 
 class GameScreen(world: World) : ScreenAdapter() {
     val levelStage = Stage(ExtendViewport(
@@ -40,8 +41,8 @@ class GameScreen(world: World) : ScreenAdapter() {
     init {
         levelStage.addActor(MapActor(world.map))
         for (creature in world.creatures) {
-            // TODO: create creature actor
-            // TODO: set onDeath callback
+			val actor = CreatureActor(creature)
+			levelStage.addActor(actor)
         }
 
         Gdx.input.inputProcessor = InputMultiplexer(

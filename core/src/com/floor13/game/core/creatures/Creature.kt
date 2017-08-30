@@ -37,7 +37,7 @@ abstract class Creature(
         get() = (perception * SIGHT_PER_PERCEPTION).toInt()
 
     // Callbacks
-    val onDeath: () -> Unit = {}    
+    var onDeath: () -> Unit = {}    
 
     val xpModifier: Float
         get() = 1 + intelligence * XP_MODIFIER_PER_INTELLIGENCE
