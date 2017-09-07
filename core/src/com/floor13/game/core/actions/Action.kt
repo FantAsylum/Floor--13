@@ -4,6 +4,8 @@ import com.floor13.game.core.World
 
 interface Action {
     val energyCost: Int
+	val isValid: Boolean
     
-    fun apply(world: World)
+    fun apply()
+	
 } 

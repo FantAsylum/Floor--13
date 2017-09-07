@@ -18,7 +18,7 @@ class World(
             creature.energyPoints += ENERGY_PER_TICK
             creature.nextAction?.let {
                 if (it.energyCost < creature.energyPoints) {
-                    it.apply(this)
+                    it.apply()
                     creature.energyPoints -= it.energyCost
                     appliedActions.add(it)
                 }
