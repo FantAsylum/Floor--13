@@ -16,3 +16,8 @@ abstract class Tile(
 class Ground: Tile()
 class Wall: Tile()
 class Door(var opened: Boolean = false): Tile()
+
+val Map.width: Int
+	get() = this.size
+val Map.height: Int
+	get() = this.get(0)?.size ?: 0
