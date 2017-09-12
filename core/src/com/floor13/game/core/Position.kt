@@ -6,4 +6,7 @@ data class Position(val x: Int, val y: Int) {
 
 	fun withinBounds(width: Int, height: Int) =
 		x >= 0 && x < width && y >= 0 && y < height
+
+	fun translated(dx: Int, dy: Int) =
+		Position(x + dx, y + dy)
 }
