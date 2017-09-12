@@ -25,6 +25,8 @@ class World(
                     creature.energyPoints -= it.energyCost
                     appliedActions.add(it)
                 }
+				for (listener in  actionListeners)
+					listener(it)
 				creature.nextAction = null
             }
 
