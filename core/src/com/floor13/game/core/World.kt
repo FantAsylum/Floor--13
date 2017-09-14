@@ -13,6 +13,10 @@ class World(
 ) {
 	val currentFloor: Map
 		get() = floors[mainCharacter.floor]
+
+	init {
+		currentFloor.updateExplored(mainCharacter.calculateFieldOfView(currentFloor))
+	}
 	
     // TODO: add main character name
     fun tick(): List<Action> {
@@ -26,6 +30,8 @@ class World(
                     appliedActions.add(it)
                 }
 				creature.nextAction = null
+
+				currentFloor.updateExplored(mainCharacter.calculateFieldOfView(currentFloor))
             }
 
         }
