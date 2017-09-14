@@ -21,6 +21,8 @@ class Cyborg(kindId: String, position: Position): Creature(kindId, position) {
     override fun levelUp(level: Int) {
         attributePoints++
     }
+
+	override val sightRange = 4 // FIXME: stub
 	
 	override fun calculateFieldOfView(map: Map): List<Position> {
 		fun dist(x1: Int, y1: Int, x2: Int, y2: Int): Float {

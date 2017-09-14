@@ -12,7 +12,7 @@ import com.floor13.game.core.creatures.Cyborg
 import com.floor13.game.core.MAIN_CHARACTER_KIND_ID
 
 class MainMenuScreen : ScreenAdapter() {
-    val generator = CrossMapGenerator(11, 11) // FIXME: stub logic
+    val generator = CrossMapGenerator(25, 25) // FIXME: stub logic
     
     init {
         // TODO: make UI setup here

@@ -53,6 +53,7 @@ object FloorMinus13: ApplicationAdapter() {
     private fun setResourcesToBeLoaded() {
         assetManager.apply {
             load("graphics/terrain/level1/atlas.atlas", TextureAtlas::class.java)
+			load("graphics/fow/atlas.atlas", TextureAtlas::class.java)
 			load(CREATURE_ATLAS_PATH, TextureAtlas::class.java)
         }
     }

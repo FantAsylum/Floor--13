@@ -129,5 +129,8 @@ task packTextures {
 
         def creaturesPath = new File("android/assets/graphics/creatures").getPath()
         TexturePacker.process(creaturesPath, creaturesPath, "atlas")
+
+        def fowPath = new File("android/assets/graphics/fow").getPath()
+        TexturePacker.process(fowPath, fowPath, "atlas")    
     }
 }
