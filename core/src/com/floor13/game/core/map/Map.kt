@@ -13,6 +13,16 @@ val Map.width: Int
 val Map.height: Int
 	get() = this.get(0)?.size ?: 0
 
+fun Map.getTilesWithIndices() =
+	this.withIndex().flatMap { (x, row) ->
+		row.withIndex().map { (y, tile) ->
+			TileWithIndices(x, y, tile)
+		}
+	}
+
+
+data class TileWithIndices(val x: Int, val y: Int, val tile: Tile)
+
 abstract class Tile(
         var creature: Creature? = null,
         val items: MutableList<Item> = mutableListOf()
