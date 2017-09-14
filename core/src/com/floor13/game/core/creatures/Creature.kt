@@ -7,6 +7,7 @@ import com.floor13.game.core.map.Map
 abstract class Creature(
         val kindId: String,
         var position: Position,
+		var floor: Int = 0,
         var xp: Int = 0,
         var energyPoints: Int = 0,
         var nextAction: Action? = null

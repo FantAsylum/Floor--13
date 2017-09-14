@@ -7,20 +7,26 @@ import com.floor13.game.core.creatures.Creature
 import com.floor13.game.core.Position
 import com.floor13.game.core.World
 
-class MoveAction(val world: World, val creature: Creature, val newPosition: Position): Action {
+class MoveAction(
+		world: World,
+		val creature: Creature,
+		val newPosition: Position
+): Action {
     override val energyCost = 10 // TODO: change hardcode with complex calculation
+
+	private val map = world.floors[creature.floor]
 
 	override val isValid: Boolean
 		get() =
 			newPosition adjacentTo creature.position &&
-			newPosition.withinBounds(world.map.width, world.map.height) &&
-			world.map[newPosition].isPassable
+			newPosition.withinBounds(map.width, map.height) &&
+			map[newPosition].isPassable
 			
     
     override fun apply() {
 		assert(isValid)
-		world.map[creature.position].creature = null
-		world.map[newPosition].creature = creature
+		map[creature.position].creature = null
+		map[newPosition].creature = creature
 		creature.position = newPosition
 	}
 } 

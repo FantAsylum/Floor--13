@@ -22,7 +22,7 @@ class MainMenuScreen : ScreenAdapter() {
         val map = generator.generate()
         // TODO: remove and replace with actual rendering logic
         FloorMinus13.pushScreen(GameScreen(World(
-                map,
+                arrayOf(map),
                 Cyborg(MAIN_CHARACTER_KIND_ID, Position(3, 3)) // TODO: replace hardcoden
         )))
     }

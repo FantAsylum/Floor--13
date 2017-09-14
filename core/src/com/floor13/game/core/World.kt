@@ -7,12 +7,14 @@ import com.floor13.game.core.creatures.Cyborg
 import com.floor13.game.core.actions.Action
 
 class World(
-        val map: Map,
+        val floors: Array<Map>,
         val mainCharacter: Cyborg,
         val creatures: MutableList<Creature> = mutableListOf(mainCharacter as Creature)
 ) {
 	private val actionListeners = mutableListOf<(Action) -> Unit>()
-	
+
+	val currentFloor: Map
+		get() = floors[mainCharacter.floor]
 	
     // TODO: add main character name
     fun tick(): List<Action> {

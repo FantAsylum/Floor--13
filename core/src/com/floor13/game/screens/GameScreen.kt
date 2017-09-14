@@ -70,7 +70,7 @@ class GameScreen(val world: World) : ScreenAdapter() {
 	}
 
     init {
-        levelStage.addActor(MapActor(world.map))
+        levelStage.addActor(MapActor(world.currentFloor))
         for (creature in world.creatures) {
 			val actor = CreatureActor(creature, world)
 			levelStage.addActor(actor)
