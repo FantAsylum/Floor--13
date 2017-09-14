@@ -10,7 +10,7 @@ import com.floor13.game.core.creatures.Creature
 import com.floor13.game.util.CreatureTextureResolver
 import com.floor13.game.TILE_SIZE
 
-class CreatureActor(val creature: Creature, world: World): BaseActor() {
+class CreatureActor(val creature: Creature): BaseActor() {
 
 	val texture: TextureRegion = CreatureTextureResolver.getTexture(creature.kindId)
 	
@@ -26,15 +26,11 @@ class CreatureActor(val creature: Creature, world: World): BaseActor() {
 			}
 		}
 
-		world.addActionListener(actionListener)
 
-		creature.onDeath = {
-			this@CreatureActor.remove()
-			world.removeActionListener(actionListener)
-		}
+		creature.onDeath = { this@CreatureActor.remove() }
 	}
 
-	private fun updateBounds() {
+	fun updateBounds() {
 		setBounds(
 				creature.position.x * TILE_SIZE,
 				creature.position.y * TILE_SIZE,

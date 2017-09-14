@@ -11,8 +11,6 @@ class World(
         val mainCharacter: Cyborg,
         val creatures: MutableList<Creature> = mutableListOf(mainCharacter as Creature)
 ) {
-	private val actionListeners = mutableListOf<(Action) -> Unit>()
-
 	val currentFloor: Map
 		get() = floors[mainCharacter.floor]
 	
@@ -27,18 +25,12 @@ class World(
                     creature.energyPoints -= it.energyCost
                     appliedActions.add(it)
                 }
-				for (listener in  actionListeners)
-					listener(it)
 				creature.nextAction = null
             }
 
         }
         return appliedActions
     }
-
-	fun addActionListener(listener: (Action) -> Unit) = actionListeners.add(listener)
-
-	fun removeActionListener(listener: (Action) -> Unit) = actionListeners.remove(listener)
 
     companion object {
         val ENERGY_PER_TICK = 10

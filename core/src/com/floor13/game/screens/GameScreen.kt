@@ -13,6 +13,7 @@ import com.floor13.game.actors.MapActor
 import com.floor13.game.actors.CreatureActor
 import com.floor13.game.core.actions.MoveAction
 import com.floor13.game.core.Position
+import com.floor13.game.core.creatures.Creature
 
 class GameScreen(val world: World) : ScreenAdapter() {
     val levelStage = Stage(ExtendViewport(
@@ -69,11 +70,14 @@ class GameScreen(val world: World) : ScreenAdapter() {
 			}
 	}
 
+	private val creatureActors = mutableMapOf<Creature, CreatureActor>()
+
     init {
         levelStage.addActor(MapActor(world.currentFloor))
         for (creature in world.creatures) {
-			val actor = CreatureActor(creature, world)
+			val actor = CreatureActor(creature)
 			levelStage.addActor(actor)
+			creatureActors.put(creature, actor)
         }
 
         Gdx.input.inputProcessor = InputMultiplexer(
@@ -83,9 +87,20 @@ class GameScreen(val world: World) : ScreenAdapter() {
     }
     
     override fun render(delta: Float) {
-		while (world.mainCharacter.nextAction != null)
-			world.tick()
+		while (world.mainCharacter.nextAction != null) {
+			for (action in world.tick())
+				when (action) {
+					is MoveAction -> {
+						creatureActors[action.creature]?.updateBounds()
+							?: Gdx.app.error(TAG, "Invalid creature in move action")
+					}
+				}
+		}
         levelStage.act(delta)
         levelStage.draw()
     }
+
+	companion object {
+		val TAG = GameScreen::class.java.simpleName
+	}
 }
