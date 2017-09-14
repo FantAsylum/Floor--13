@@ -2,6 +2,7 @@ package com.floor13.game.core.creatures
 
 import com.floor13.game.core.actions.Action
 import com.floor13.game.core.Position
+import com.floor13.game.core.map.Map
 
 abstract class Creature(
         val kindId: String,
@@ -28,7 +29,10 @@ abstract class Creature(
     abstract fun hit(damagePoints: Int)
     // TODO: add function for hitting specified part
 
-    abstract fun levelUp(level: Int)
+	abstract fun levelUp(level: Int)
+
+
+	abstract fun calculateFieldOfView(map: Map): List<Position>
             
     open val speed: Int
         get() = BASIC_SPEED + connectivity * SPEED_PER_CONNECTIVITY
