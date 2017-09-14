@@ -2,7 +2,6 @@ package com.floor13.game.core.creatures
 
 import com.floor13.game.core.Position
 import com.floor13.game.core.map.Map
-import com.floor13.game.core.map.getTilesWithIndices
 
 class Cyborg(kindId: String, position: Position): Creature(kindId, position) {
     override val perception: Int

@@ -4,22 +4,30 @@ import com.floor13.game.core.Item
 import com.floor13.game.core.creatures.Creature
 import com.floor13.game.core.Position
 
-typealias Map = Array<Array<Tile>>
 
-operator fun Map.get(position: Position) = this[position.x][position.y]
+class Map private constructor(val tiles: Array<Array<Tile>>) {
+	constructor(width: Int, height: Int)
+			: this(Array(width, { Array(height, { Ground() as Tile })}))
 
-val Map.width: Int
-	get() = this.size
-val Map.height: Int
-	get() = this.get(0)?.size ?: 0
+	val width: Int
+		get() = tiles.size
 
-fun Map.getTilesWithIndices() =
-	this.withIndex().flatMap { (x, row) ->
-		row.withIndex().map { (y, tile) ->
-			TileWithIndices(x, y, tile)
+	val height: Int
+		get() = tiles.get(0)?.size ?: 0
+
+	operator fun get(x: Int, y: Int) = tiles[x][y]
+	operator fun get(position: Position) = tiles[position.x][position.y]
+
+	operator fun set(x: Int, y: Int, tile: Tile) { tiles[x][y] = tile }
+	operator fun set(position: Position, tile: Tile) { tiles[position.x][position.y] = tile }
+	
+	fun getTilesWithIndices() =
+		tiles.withIndex().flatMap { (x, row) ->
+			row.withIndex().map { (y, tile) ->
+				TileWithIndices(x, y, tile)
+			}
 		}
-	}
-
+}
 
 data class TileWithIndices(val x: Int, val y: Int, val tile: Tile)
 

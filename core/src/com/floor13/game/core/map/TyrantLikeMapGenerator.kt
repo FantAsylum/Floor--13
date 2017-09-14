@@ -11,7 +11,7 @@ class TyrantLikeMapGanerator(
 ): MapGenerator {
     override fun generate(): Map {
         //  1. Fill the whole map with solid earth 
-        val map = Array(width, { Array(height, { Wall() as Tile }) })
+        val map = Map(width, height)
         
         // 2. Dig out a single room in the centre of the map
         map.fillRect(

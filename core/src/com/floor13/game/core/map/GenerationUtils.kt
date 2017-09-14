@@ -7,7 +7,7 @@ private val rand = Random()
 fun Map.fillRect(xs: IntRange, ys: IntRange, tileFactory: () -> Tile) {
     for (x in xs)
         for (y in ys)
-            this[x][y] = tileFactory()
+            this[x, y] = tileFactory()
 }
 
 /**

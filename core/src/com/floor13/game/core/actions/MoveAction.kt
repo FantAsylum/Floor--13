@@ -1,8 +1,5 @@
 package com.floor13.game.core.actions
 
-import com.floor13.game.core.map.width
-import com.floor13.game.core.map.height
-import com.floor13.game.core.map.get
 import com.floor13.game.core.creatures.Creature
 import com.floor13.game.core.Position
 import com.floor13.game.core.World

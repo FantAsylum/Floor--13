@@ -6,8 +6,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import ktx.collections.*
 
 import com.floor13.game.core.map.Map
-import com.floor13.game.core.map.width
-import com.floor13.game.core.map.height
 import com.floor13.game.core.map.Tile
 import com.floor13.game.core.map.Ground
 import com.floor13.game.core.map.Wall
@@ -35,7 +33,7 @@ class SidedTextureResolver(
 			atlas,
 			map.width,
 			map.height,
-			{ x1, y1, x2, y2 -> map[x1][y1] sameTileTypeAs map[x2][y2] }
+			{ x1, y1, x2, y2 -> map[x1, y1] sameTileTypeAs map[x2, y2] }
 	)
 	
     fun getTexture(name: String, x: Int, y: Int): TextureRegion {

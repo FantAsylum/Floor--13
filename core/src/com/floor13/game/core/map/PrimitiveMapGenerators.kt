@@ -4,12 +4,7 @@ class EmptyMapGenerator(
         val width: Int,
         val height: Int
 ): MapGenerator {
-    override fun generate(): Map {
-        return Array(
-                width,
-                { Array(height, { Ground() as Tile }) }
-        )
-    }
+    override fun generate() = Map(width, height)
 }
 
 class CrossMapGenerator(
@@ -17,7 +12,7 @@ class CrossMapGenerator(
         val height: Int
 ): MapGenerator {
     override fun generate(): Map {
-        val map = Array(width, { Array(height, { Ground() as Tile })})
+        val map = Map(width, height)
 
         val mx = width / 2
         val my = height / 2
@@ -33,10 +28,10 @@ class CrossMapGenerator(
         map.fillRect(0 until width, height - 1..height - 1, { Wall() })
         
         // TODO: add doors
-        map[mx][my / 2] = Door()
-        map[mx][my + my / 2] = Door()
-        map[mx / 2][my] = Door()
-        map[mx + mx / 2][my] = Door()
+        map[mx, my / 2] = Door()
+        map[mx, my + my / 2] = Door()
+        map[mx / 2, my] = Door()
+        map[mx + mx / 2, my] = Door()
 
         return map
     }

@@ -20,15 +20,15 @@ class MapActor(val map: Map): BaseActor() {
         setBounds(
                 0f,
                 0f,
-                map.size * TILE_SIZE,
-                (map.getOrNull(0)?.size ?: 0) * TILE_SIZE
+                map.width * TILE_SIZE,
+                map.height * TILE_SIZE
         )
     }
 
     override fun draw(batch: Batch, parentAlpha: Float) {
-        for (x in 0 until map.size) {
-            for (y in 0 until map[x].size) {
-                val tile = map[x][y]
+        for (x in 0 until map.width) {
+            for (y in 0 until map.height) {
+                val tile = map[x, y]
                 batch.draw(
                         textureResolver.getTexture(tile.texture, x, y),
                         x * TILE_SIZE,
