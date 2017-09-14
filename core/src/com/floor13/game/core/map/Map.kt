@@ -14,6 +14,8 @@ class Map private constructor(val tiles: Array<Array<Tile>>) {
 
 	val height: Int
 		get() = tiles.get(0)?.size ?: 0
+	
+	private val exploredTiles = mutableSetOf<Position>()
 
 	operator fun get(x: Int, y: Int) = tiles[x][y]
 	operator fun get(position: Position) = tiles[position.x][position.y]
@@ -27,6 +29,12 @@ class Map private constructor(val tiles: Array<Array<Tile>>) {
 				TileWithIndices(x, y, tile)
 			}
 		}
+
+	fun updateExplored(fov: List<Position>) {
+		exploredTiles.addAll(fov)
+	}
+
+	fun isExplored(x: Int, y: Int) = exploredTiles.contains(Position(x, y))
 }
 
 data class TileWithIndices(val x: Int, val y: Int, val tile: Tile)
