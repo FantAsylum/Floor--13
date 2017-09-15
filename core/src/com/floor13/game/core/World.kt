@@ -11,13 +11,15 @@ class World(
         val mainCharacter: Cyborg,
         val creatures: MutableList<Creature> = mutableListOf(mainCharacter as Creature)
 ) {
+	var age: Int = 0
+		private set
 	val currentFloor: Map
 		get() = floors[mainCharacter.floor]
 
 	init {
 		currentFloor.updateExplored(mainCharacter.calculateFieldOfView(currentFloor))
 	}
-	
+
     // TODO: add main character name
     fun tick(): List<Action> {
         val appliedActions = mutableListOf<Action>()
@@ -35,6 +37,7 @@ class World(
             }
 
         }
+		age += 1
         return appliedActions
     }
 
