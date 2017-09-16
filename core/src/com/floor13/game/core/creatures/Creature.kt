@@ -3,6 +3,7 @@ package com.floor13.game.core.creatures
 import com.floor13.game.core.actions.Action
 import com.floor13.game.core.Position
 import com.floor13.game.core.map.Map
+import com.floor13.game.core.World
 
 abstract class Creature(
         val kindId: String,
@@ -23,7 +24,16 @@ abstract class Creature(
                 onDeath()
             field = alive 
         }
-    
+
+	var world: World
+		get() = _world!!
+		set(value) {
+			if (_world != null && _world != value)
+				throw RuntimeException("Creature already attached to another world")
+			_world = value
+		}
+
+	private var _world: World? = null
     /**
     * Hit creature with specified damage
     */
