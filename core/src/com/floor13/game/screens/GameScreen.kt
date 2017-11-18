@@ -103,6 +103,7 @@ class GameScreen(val world: World) : ScreenAdapter() {
 							?: Gdx.app.error(TAG, "Invalid creature in move action")
 					}
 				}
+			cameraFollowPlayer()
 		}
         levelStage.act(delta)
         levelStage.draw()
@@ -110,5 +111,27 @@ class GameScreen(val world: World) : ScreenAdapter() {
 
 	companion object {
 		val TAG = GameScreen::class.java.simpleName
+	}
+
+	fun cameraFollowPlayer() {
+		val cameraX = levelStage.camera.position.x
+		val cameraY = levelStage.camera.position.y
+		val playerX = world.mainCharacter.position.x * 64f
+		val playerY = world.mainCharacter.position.y * 64f
+		val maxDistance = 64f
+		if (cameraX > playerX) {
+			if (cameraX - playerX > maxDistance)
+				levelStage.camera.translate(-64f, 0f, 0f)
+		} else {
+			if (playerX - cameraX > maxDistance)
+				levelStage.camera.translate(64f, 0f, 0f)
+		}
+		if (cameraY > playerY) {
+			if (cameraY - playerY > maxDistance)
+				levelStage.camera.translate(0f, -64f, 0f)
+		} else {
+			if (playerY - cameraY > maxDistance)
+				levelStage.camera.translate(0f, 64f, 0f)
+		}
 	}
 }
