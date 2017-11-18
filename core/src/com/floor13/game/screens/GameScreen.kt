@@ -92,6 +92,9 @@ class GameScreen(val world: World) : ScreenAdapter() {
                 mapScroller,
 				keyboardProcessor
         )
+
+		levelStage.camera.position.x = world.mainCharacter.position.x * 64f
+		levelStage.camera.position.y = world.mainCharacter.position.y * 64f
     }
     
     override fun render(delta: Float) {
@@ -113,7 +116,7 @@ class GameScreen(val world: World) : ScreenAdapter() {
 		val TAG = GameScreen::class.java.simpleName
 	}
 
-	fun cameraFollowPlayer() {
+	fun cameraFollowPlayer() {  // TODO: check
 		val cameraX = levelStage.camera.position.x
 		val cameraY = levelStage.camera.position.y
 		val playerX = world.mainCharacter.position.x * 64f
@@ -134,4 +137,5 @@ class GameScreen(val world: World) : ScreenAdapter() {
 				levelStage.camera.translate(0f, 64f, 0f)
 		}
 	}
+
 }
