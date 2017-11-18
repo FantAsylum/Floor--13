@@ -11,6 +11,8 @@ import com.floor13.game.core.map.Ground
 import com.floor13.game.core.map.Wall
 import com.floor13.game.core.map.Door
 
+import com.floor13.game.core.Position
+
 /**
  * @param atlas atlas for resolving textures
  */
@@ -20,15 +22,15 @@ class SidedTextureResolver(
 		private val height: Int,
 		private val isSameTexture: (Int, Int, Int, Int) -> Boolean
 ) {
-
-    private val cache: Array<Array<TextureRegion?>> = Array(
+    private val cache: Array<Array<MutableMap<String, TextureRegion>>> = Array(
             width,
-            { Array(height, { null as TextureRegion? })}
+            { Array(height, { mutableMapOf<String, TextureRegion>() })}
     )
 
     private val variants = gdxArrayOf<TextureRegion>()
 
-	constructor(atlas: TextureAtlas, map: Map)
+	constructor(atlas: TextureAtlas,
+                map: Map)
 			: this(
 			atlas,
 			map.width,
@@ -37,7 +39,10 @@ class SidedTextureResolver(
 	)
 	
     fun getTexture(name: String, x: Int, y: Int): TextureRegion {
-        return cache[x][y] ?: {
+        val isAlreadyCached = cache[x][y][name] != null
+        return if (isAlreadyCached) {
+            cache[x][y][name]!!
+        } else {
             val suffix = StringBuilder()
 
             // order convention: urld
@@ -58,9 +63,10 @@ class SidedTextureResolver(
                 if (region.name == exactName || region.name == genericName)
                     variants.add(region)
 
-            cache[x][y] = variants.random()
-            cache[x][y]!!
-        }()
+            val result = variants.random()
+            cache[x][y][name] = result
+            result
+        }
     }
 
 	companion object {

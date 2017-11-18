@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch
 
 import com.floor13.game.FloorMinus13
 import com.floor13.game.core.map.Map
+import com.floor13.game.core.map.Door
 import com.floor13.game.util.SidedTextureResolver
 import com.floor13.game.texture
 import com.floor13.game.TILE_SIZE
@@ -14,7 +15,8 @@ class MapActor(val map: Map): BaseActor() {
     // TODO: pick atlas basing on theme (bunker (1-4 lvl), lab (5-8) etc.)
     val textureResolver =
         SidedTextureResolver(
-            FloorMinus13.getAtlas("graphics/terrain/level1/atlas.atlas"), map)
+            FloorMinus13.getAtlas("graphics/terrain/level1/atlas.atlas"),
+			map)
 
 	val fogOfWarResolver =
 		SidedTextureResolver(
@@ -41,6 +43,7 @@ class MapActor(val map: Map): BaseActor() {
         for (x in 0 until map.width) {
             for (y in 0 until map.height) {
                 val tile = map[x, y]
+
                 batch.draw(
                         textureResolver.getTexture(tile.texture, x, y),
                         x * TILE_SIZE,

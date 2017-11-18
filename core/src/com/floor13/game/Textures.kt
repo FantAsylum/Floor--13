@@ -9,7 +9,7 @@ val Tile.texture: String
     get() = when(this) {
         is Ground -> "floor"
         is Wall -> "wall"
-        is Door -> "door"
+        is Door -> if (this.opened) "dooropen" else "door"
         else -> throw RuntimeException("Invalid tile")
     }
 

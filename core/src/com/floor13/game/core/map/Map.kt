@@ -52,5 +52,6 @@ class Wall: Tile() {
 }
 
 class Door(var opened: Boolean = false): Tile() {
-	override val isPassable = opened && super.isPassable
+	override val isPassable: Boolean
+		get() = opened && super.isPassable
 }

@@ -12,8 +12,10 @@ import com.floor13.game.core.World
 import com.floor13.game.actors.MapActor
 import com.floor13.game.actors.CreatureActor
 import com.floor13.game.core.actions.MoveAction
+import com.floor13.game.core.actions.OpenDoorAction
 import com.floor13.game.core.Position
 import com.floor13.game.core.creatures.Creature
+import com.floor13.game.core.map.Door
 
 class GameScreen(val world: World) : ScreenAdapter() {
     val levelStage = Stage(ExtendViewport(
@@ -43,27 +45,33 @@ class GameScreen(val world: World) : ScreenAdapter() {
     }
 
 	val keyboardProcessor = object: InputAdapter() {
-		fun scheduleMove(position: Position) {
-			val action = MoveAction(world, world.mainCharacter, position)
+		fun scheduleMoveOrDoorOpening(position: Position) {
+			val tile = world.currentFloor[position]
+			val action =
+					if (tile is Door && !tile.opened) {
+						OpenDoorAction(world, world.mainCharacter, position)
+					} else {
+						MoveAction(world, world.mainCharacter, position)
+					}
 			if (action.isValid)
 				world.mainCharacter.nextAction = action
 		}
 		override fun keyUp(keycode: Int) =
 			when (keycode) {
 				Input.Keys.UP -> {
-					scheduleMove(world.mainCharacter.position.translated(0, 1))
+					scheduleMoveOrDoorOpening(world.mainCharacter.position.translated(0, 1))
 					true
 				}
 				Input.Keys.DOWN -> {
-					scheduleMove(world.mainCharacter.position.translated(0, -1))
+					scheduleMoveOrDoorOpening(world.mainCharacter.position.translated(0, -1))
 					true
 				}
 				Input.Keys.RIGHT -> {
-					scheduleMove(world.mainCharacter.position.translated(1, 0))
+					scheduleMoveOrDoorOpening(world.mainCharacter.position.translated(1, 0))
 					true
 				}
 				Input.Keys.LEFT -> {
-					scheduleMove(world.mainCharacter.position.translated(-1, 0))
+					scheduleMoveOrDoorOpening(world.mainCharacter.position.translated(-1, 0))
 					true
 				}
 				else -> false
